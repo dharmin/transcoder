@@ -802,6 +802,9 @@ class RT_Transcoder_Handler {
 			 * @param int 		$post_id 		Attachment ID of the video for which thumbnail has been set
 			 */
 			do_action( 'transcoded_thumb_added', $largest_thumb, $post_id );
+
+			$thumb_id = wp_download_attachment( $largest_thumb );
+			set_post_thumbnail( $post_id, $thumb_id );
 		}
 
 		return $largest_thumb_url;
